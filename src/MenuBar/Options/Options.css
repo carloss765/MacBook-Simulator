@@ -1,0 +1,25 @@
+@keyframes slideIn {
+  0% {
+    transform: translateX(100%); /* Start from the left */
+  }
+  100% {
+    transform: translateX(0); /* Move to the original position */
+  }
+}
+
+@keyframes slideOut {
+  0% {
+    transform: translateX(0); /* Start from the original position */
+  }
+  100% {
+    transform: translateX(100%); /* Move to the left */
+  }
+}
+
+.slideIn {
+  animation: slideIn 0.2s ease-in-out;
+}
+
+.slideOut {
+  animation: slideOut 0.2s ease-in-out;
+}

@@ -1,0 +1,44 @@
+---
+description:
+globs: *.js
+alwaysApply: false
+---
+---
+description: Set of rules and best practices for JavaScript (.js) development
+globs: ["*.js"]
+alwaysApply: true
+---
+
+- Use a single responsibility per function.
+- Keep functions under 30 lines (excluding comments and blank lines).
+- Name variables, functions, and classes descriptively and clearly; avoid abbreviations.
+- Implement logic in the simplest and most direct way possible; avoid unnecessary complexity.
+- Handle errors explicitly using `try...catch` and provide useful error messages.
+- Divide code into small, cohesive modules (ideally, one `.js` file per module with a clear responsibility).
+- Organize all `import` statements at the beginning of the file.
+- Ensure that simply importing a module does not execute code with significant side effects.
+- Prefer `const` for declaring variables; use `let` only if the variable needs to be reassigned. Avoid `var`.
+- Always use strict comparison operators (`===` and `!==`) instead of abstract comparison operators (`==` and `!=`).
+- Employ `async/await` to handle asynchronous operations, ensuring proper error handling (e.g., with `try...catch` within `async` functions).
+- Minimize the use of global variables; prefer passing dependencies or state explicitly.
+- Write pure functions (those that for the same input always return the same output and have no side effects) whenever practical.
+- Add comments to explain the "why" of design decisions or complex logic, not just "what" the code does.
+- Document public functions, classes, and complex modules using JSDoc, specifying their purpose, `@param` (parameters with their types), and `@returns` (return value with its type).
+- Keep comments synchronized with the code. Remove or update obsolete or incorrect comments.
+- Use a consistent indentation style (e.g., 2 or 4 spaces, do not mix tabs and spaces).
+- Apply spacing consistently around operators, after commas, and before and after code block braces to improve readability.
+- Be consistent with the use of semicolons at the end of statements (generally recommended to avoid issues with Automatic Semicolon Insertion).
+- Keep code line length within a reasonable limit (e.g., 80 or 100 characters) to avoid horizontal scrolling.
+- Choose a quote type for string literals (single `'` or double `"`) and be consistent. Use template literals (backticks `` ` ``) for strings requiring expression interpolation or spanning multiple lines.
+- Write code in a way that facilitates unit and integration testing (e.g., small functions, explicit dependencies).
+- Encourage the creation of unit tests for critical business logic and complex functions.
+- Consider integrating ESLint for static code analysis and Prettier for automatic formatting, configured according to these guidelines.
+
+
+
+
+
+
+
+
+- Include these rules as part of the code review process to ensure quality and consistency.

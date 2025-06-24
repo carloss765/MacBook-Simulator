@@ -1,0 +1,71 @@
+---
+description:
+globs: *.html
+alwaysApply: false
+---
+---
+description: Best practice rules for HTML (.html) files, emphasizing semantics, accessibility, and maintainability.
+globs: ["*.html", "*.htm"]
+alwaysApply: true
+---
+
+### Document Structure & Essentials
+
+- **`<!DOCTYPE html>`:** Always start your HTML document with the `<!DOCTYPE html>` declaration to ensure browsers use standards mode.
+- **`<html>` Element:** Use the `<html>` element as the root, and include a `lang` attribute to specify the document's primary language (e.g., `<html lang="en">`).
+- **`<head>` Section:**
+    - Include a `<meta charset="UTF-8">` as the first child of `<head>` for character encoding.
+    - Include a `<meta name="viewport" content="width=device-width, initial-scale=1.0">` for responsiveness.
+    - Provide a clear and descriptive `<title>` for each page.
+    - Link CSS files using `<link rel="stylesheet" href="path/to/styles.css">`. Avoid `<style>` tags for significant CSS; keep CSS in external files.
+    - Include a `<meta name="description" content="...">` for SEO.
+- **`<body>` Section:** Contains all the visible content of the page.
+
+### Semantics & Structure
+
+- **Use Semantic HTML5 Elements:** Employ elements like `<header>`, `<footer>`, `<nav>`, `<main>`, `<article>`, `<section>`, and `<aside>` to structure your content meaningfully.
+    - `<main>`: Should contain the primary unique content of the page. Use only one per page.
+    - `<nav>`: For major navigation blocks.
+    - `<article>`: For self-contained compositions like blog posts, news articles.
+    - `<section>`: For thematic groupings of content, typically with a heading.
+- **Headings (`<h1>`-`<h6>`):**
+    - Use headings to structure content hierarchically. Start with an `<h1>` (usually one per page for the main title) and do not skip levels (e.g., don't go from `<h2>` to `<h4>`).
+    - Headings should be descriptive of the content that follows.
+- **Lists (`<ul>`, `<ol>`, `<dl>`):** Use for list-based content. `<ul>` for unordered, `<ol>` for ordered, and `<dl>` for description lists.
+- **Quotes:** Use `<blockquote>` for long quotations and `<q>` for short, inline quotations. Use `<cite>` for attributing a quote.
+- **Figures and Captions:** Use `<figure>` to encapsulate media like images or diagrams, and `<figcaption>` to provide a caption.
+
+### Accessibility (A11y)
+
+- **Images (`<img>`):**
+    - Always provide descriptive `alt` text for images. If an image is purely decorative and adds no information, use an empty `alt=""`.
+    - Consider responsive images using `<picture>` element or `srcset` and `sizes` attributes.
+- **Links (`<a>`):**
+    - Link text should be descriptive and make sense out of context (e.g., "Read more about our services" instead of just "Click here").
+    - Ensure links are clearly distinguishable (e.g., underlined and/or a different color).
+- **Forms (`<form>`):**
+    - Associate `<label>`s explicitly with their form controls using the `for` attribute matching the control's `id`.
+    - Use appropriate `<input>` types (e.g., `type="email"`, `type="tel"`, `type="number"`).
+    - Group related form controls using `<fieldset>` and provide a legend with `<legend>`.
+    - Ensure forms are keyboard navigable and operable.
+    - Use `<button type="submit">` for form submission buttons.
+- **ARIA Attributes:** Use ARIA (Accessible Rich Internet Applications) attributes (`aria-label`, `aria-describedby`, `role`, etc.) judiciously to enhance accessibility where semantic HTML is insufficient, especially for dynamic content and custom widgets. Do not use ARIA if a native HTML element already provides the required semantics.
+- **Keyboard Navigation:** Ensure all interactive elements (links, buttons, form controls) are focusable and operable using a keyboard.
+- **Color Contrast:** Ensure sufficient color contrast between text and background for readability.
+
+### Content & Readability
+
+- **Indentation:** Use consistent indentation (e.g., 2 or 4 spaces) to reflect the nesting of elements and improve readability.
+- **Comments:** Use HTML comments (`<!-- ... -->`) to explain complex sections, document structure, or leave notes for collaborators.
+- **Line Breaks:** Use `<br>` sparingly, only for actual line breaks that are part of the content (e.g., in an address or poem). Do not use `<br>` for creating vertical spacing; use CSS margins/paddings instead.
+- **Avoid Inline Styles:** Do not use the `style` attribute for styling (e.g., `<p style="color: red;">`). Keep all styling in external CSS files for better maintainability and separation of concerns.
+- **Avoid Inline Scripts (mostly):** Minimize inline JavaScript (`<script>...</script>` in the body or `on*` event attributes). Prefer external JavaScript files linked at the end of the `<body>` (unless `defer` or `async` attributes are used in `<head>`).
+
+### Validation & Best Practices
+
+- **Validate Your HTML:** Regularly validate your HTML using tools like the W3C Markup Validation Service to catch errors and ensure compliance.
+- **Keep it Lean:** Avoid unnecessary `<div>` elements or overly complex nesting when simpler semantic markup would suffice.
+- **Character Entities:** Use character entities for special characters (e.g., `&copy;` for ©, `&nbsp;` for a non-breaking space) where necessary.
+- **File Naming:** Use lowercase, hyphenated file names (e.g., `about-us.html`).
+- **Logical Order:** Ensure the source order of content makes sense without CSS, as this can impact accessibility and SEO.
+

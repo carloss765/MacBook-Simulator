@@ -1,0 +1,104 @@
+---
+description: for the use the style in jsx or tsx
+globs:
+alwaysApply: false
+---
+---
+description: Best practice rules for CSS (.css) files, emphasizing readability, maintainability, modern standards, and Tailwind CSS usage.
+globs: ["*.css"]
+alwaysApply: false
+---
+
+### Formatting & Readability (General CSS)
+
+- **Indentation:** Use consistent indentation (e.g., 2 or 4 spaces) for custom CSS rule sets.
+- **Spacing (for custom CSS):**
+    - Add a space after a property's colon (e.g., `color: blue;` not `color:blue;`).
+    - Add a space before the opening brace of a rule set (e.g., `div {`).
+    - Use a new line for each property-value pair in custom CSS.
+    - Separate custom CSS rule sets with a blank line for clarity.
+- **Comments:**
+    - Use CSS comments (`/* ... */`) to explain non-obvious custom CSS, complex selectors, or to group sections.
+    - For larger sections of custom CSS, consider a "table of contents" style comment block.
+- **Lowercase (for custom CSS):** Use lowercase for selectors, properties, and values (except for string literals and font names).
+- **Quotes (for custom CSS):** Use quotes for attribute selector values and font names with spaces. Prefer double quotes or single quotes consistently.
+
+### Selectors (General CSS - less emphasis if primarily Tailwind)
+
+- **Specificity (for custom CSS):**
+    - Keep custom CSS selectors as short and specific as necessary.
+    - Avoid using IDs (`#my-id`) for styling where possible if writing custom CSS alongside Tailwind.
+- **Naming Conventions (for custom CSS components/utilities):**
+    - If creating custom components or abstracting Tailwind patterns with `@apply`, use a consistent naming convention (e.g., BEM-like for component blocks).
+    - Custom class names should be meaningful.
+
+### Properties & Values (General CSS - less emphasis if primarily Tailwind)
+
+- **Property Order (for custom CSS):** Consider a logical order for properties within custom CSS rule sets.
+- **Shorthand vs. Longhand (for custom CSS):** Use as appropriate for clarity in custom CSS.
+- **Units (for custom CSS):** Use `0` without units.
+- **Colors (for custom CSS):** Use standard CSS color formats if defining custom colors not in Tailwind's theme.
+- **Vendor Prefixes (for custom CSS):** Rely on Tailwind's build process or an autoprefixer for custom CSS.
+
+### Organization & Structure (General CSS)
+
+- **File Organization (for custom CSS):** If significant custom CSS is needed alongside Tailwind, organize it logically (e.g., `base.css`, `components.css`).
+- **CSS Custom Properties (Variables):** Leverage these for values not covered by Tailwind's theme or for more dynamic custom styling. Tailwind itself uses custom properties extensively.
+
+### Maintainability & Scalability (General CSS)
+
+- **Avoid `!important` (for custom CSS):** Still crucial. Try to work within Tailwind's utility system or use higher specificity for custom overrides if absolutely necessary.
+
+### Accessibility (General CSS & Tailwind)
+
+- **Focus Styles:** Ensure clear and visible focus indicators. Tailwind provides utilities for this (e.g., `focus:ring`). Customize if default is insufficient.
+- **High Contrast:** Design with sufficient color contrast. Use Tailwind's color palette thoughtfully.
+- **Content Hiding:** Tailwind provides utilities like `.sr-only` for accessible hiding.
+
+---
+
+### Tailwind CSS Specifics
+
+- **Embrace Utility-First:**
+    - Prioritize using Tailwind's utility classes directly in your HTML/JSX.
+    - Compose complex styles by combining multiple utility classes.
+    - Avoid premature abstraction into custom CSS classes unless a pattern is repeated very frequently or requires complex selectors/properties not achievable with utilities.
+- **Readability of Long Class Lists:**
+    - Use tools like the official Tailwind CSS Prettier plugin or editor extensions to automatically sort classes for consistency and improved readability.
+    - Break long class lists onto multiple lines in your markup if it enhances readability.
+- **Customization & Theming (`tailwind.config.js`):**
+    - Extensively use `tailwind.config.js` to customize your theme (colors, spacing, fonts, breakpoints, etc.) to match your design system.
+    - Prefer customizing the theme over writing custom CSS to override default Tailwind utilities.
+    - Use `theme.extend` to add new values without overwriting Tailwind's defaults.
+- **Handling Custom CSS / Component Abstraction:**
+    - **When to abstract:** Create custom CSS or components when:
+        - You have highly repetitive combinations of utilities.
+        - You need to style elements that you don't control directly (e.g., third-party library components).
+        - You need CSS features not covered by Tailwind utilities (e.g., complex animations, specific pseudo-elements not easily targeted by variants).
+    - **Using `@apply`:** Use `@apply` sparingly to compose Tailwind utilities into a custom CSS class. It's useful for small component-like abstractions but can lead to CSS bloat if overused for many unique combinations.
+        ```css
+        /* Example of @apply */
+        .btn-primary {
+          @apply py-2 px-4 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75;
+        }
+        ```
+    - **Component-Based Approach:** If using a JavaScript framework (React, Vue, Svelte), encapsulate utility combinations within your components rather than always creating global CSS classes.
+    - **Plugins:** For more complex needs or reusable new utilities, consider writing a Tailwind CSS plugin.
+- **Just-in-Time (JIT) Mode / PurgeCSS:**
+    - Ensure JIT mode is enabled (default in Tailwind CSS v3.0+) or PurgeCSS is correctly configured in your `tailwind.config.js` (for older versions) to remove unused styles and keep your final CSS bundle small.
+    - Correctly configure the `content` array in `tailwind.config.js` to include all files that contain Tailwind class names.
+- **Variants:**
+    - Leverage Tailwind's variants (e.g., `hover:`, `focus:`, `md:`, `dark:`) extensively to apply styles conditionally.
+    - Customize or add new variants in `tailwind.config.js` if needed.
+- **Avoid Arbitrary Values When Possible:**
+    - Stick to values defined in your theme (e.g., `p-4` instead of `p-[17px]`) for consistency.
+    - Use arbitrary values (e.g., `mt-[11px]`, `bg-[#FF00FF]`) only when a specific, non-theme value is absolutely necessary and won't be reused.
+- **Group-Hover/Focus and Peer-Hover/Focus:**
+    - Utilize `group` and `peer` utilities for styling elements based on the state of a parent or sibling, respectively, to avoid custom JavaScript or CSS.
+- **Dark Mode:** Use Tailwind's `dark:` variant for implementing dark mode effectively. Configure it in `tailwind.config.js` (class or media strategy).
+
+
+
+
+
+

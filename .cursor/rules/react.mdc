@@ -1,0 +1,82 @@
+---
+description:
+globs: *.jsx,*.tsx
+alwaysApply: false
+---
+---
+description: Best practice rules for JSX (.jsx) files, focusing on React components.
+globs: ["*.jsx", "*.tsx"]
+alwaysApply: true
+---
+
+### General JavaScript & Readability (Apply from .js rules)
+
+- Use a single responsibility per function/component.
+- Keep functions/components concise (aim for under 50-75 lines for components, less for helper functions).
+- Name variables, functions, and components descriptively and clearly; avoid abbreviations.
+- Implement logic in the simplest and most direct way possible; avoid unnecessary complexity.
+- Handle errors explicitly (e.g., error boundaries for components, `try...catch` for logic).
+- Organize `import` statements at the beginning of the file (React, then third-party libs, then local components/modules, then styles/assets).
+- Prefer `const` for declarations; use `let` only if a variable needs to be reassigned. Avoid `var`.
+- Always use strict comparison operators (`===` and `!==`).
+- Employ `async/await` for asynchronous operations, with proper error handling.
+- Minimize the use of global variables.
+- Write pure functions for utility logic where practical.
+- Add comments to explain the "why" of complex logic or non-obvious JSX structures.
+- Keep comments synchronized with the code.
+- Use a consistent indentation style.
+- Apply spacing consistently for readability.
+- Be consistent with semicolon usage (generally recommended).
+- Keep code line length within a reasonable limit (e.g., 80-100 characters).
+- Choose a consistent quote type for strings. Use template literals for interpolated or multi-line strings.
+
+### React/JSX Specific Rules
+
+- **Component Naming:** Use PascalCase for component names (e.g., `MyComponent`). File names should match the component name (e.g., `MyComponent.jsx`).
+- **Props:**
+    - Use `propTypes` (if not using TypeScript) or TypeScript types for prop validation.
+    - Destructure props at the beginning of the component for clarity: `function MyComponent({ name, age }) {...}`.
+    - Pass props explicitly; avoid spreading props (`{...props}`) unless it's a deliberate higher-order component pattern or forwarding to a known DOM element.
+    - Provide default values for non-required props (using default parameters or `defaultProps`).
+- **State Management:**
+    - Prefer functional components with Hooks (`useState`, `useEffect`, `useContext`, etc.).
+    - Initialize state with meaningful default values.
+    - Lift state up to the nearest common ancestor when multiple components need to share or modify the same state.
+    - For complex state logic, consider `useReducer` or a state management library (Context API, Redux, Zustand, etc.) if local state becomes unwieldy.
+- **JSX Structure:**
+    - Always wrap multiple JSX elements in a single root element (e.g., a `<div>` or a Fragment `<>...</>`).
+    - Use parentheses `()` when returning multi-line JSX for readability: `return ( ... );`.
+    - Avoid inline styles (`style={{ color: 'red' }}`) for anything beyond trivial, dynamic cases. Prefer CSS Modules, styled-components, Tailwind CSS, or plain CSS files.
+    - Use descriptive `className` attributes for styling.
+- **Keys in Lists:** Always provide a unique and stable `key` prop when rendering lists of elements. Use IDs from your data if available, not array indices if the list can be reordered or filtered.
+- **Event Handling:**
+    - Name event handlers with a `handle` prefix followed by the event name (e.g., `handleClick`, `handleChange`).
+    - Pass function references, not inline arrow functions, to event handlers if the function is complex or needs to be memoized (e.g., `onClick={handleClick}` vs `onClick={() => doSomething()}`). Use inline for very simple, non-reused logic.
+- **Conditional Rendering:**
+    - Keep conditional rendering logic clear and concise.
+    - Use ternary operators (`condition ? <TrueComponent /> : <FalseComponent />`) for simple conditions.
+    - Use logical AND (`&&`) for conditionally rendering an element or nothing (`condition && <Component />`).
+    - For more complex conditional rendering, extract it into a separate variable or function, or return `null` early.
+- **Component Composition:** Favor composition over inheritance. Build complex UIs by combining smaller, reusable components.
+- **Accessibility (a11y):**
+    - Use semantic HTML elements where appropriate (`<nav>`, `<main>`, `<article>`, `<button>`, etc.).
+    - Ensure all interactive elements are keyboard accessible.
+    - Provide `alt` text for images and use `aria-*` attributes where necessary to improve accessibility.
+- **Performance:**
+    - Use `React.memo` for functional components or `shouldComponentUpdate` / `PureComponent` for class components to prevent unnecessary re-renders, but only after profiling and identifying a bottleneck.
+    - Memoize expensive calculations or props with `useMemo` and `useCallback`.
+- **Hooks:**
+    - Only call Hooks at the top level of your React function components or custom Hooks.
+    - Do not call Hooks inside loops, conditions, or nested functions.
+    - Follow the Rules of Hooks.
+- **File Structure:**
+    - Group related files (component, styles, tests) in the same directory for better organization (e.g., `components/Button/Button.jsx`, `components/Button/Button.module.css`, `components/Button/Button.test.js`).
+
+
+
+
+
+
+
+
+

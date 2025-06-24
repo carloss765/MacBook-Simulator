@@ -1,0 +1,101 @@
+/* Animaciones para ventanas de aplicaciones */
+
+@keyframes windowOpen {
+  0% {
+    transform: scale(0.3) translate3d(0, 0, 0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.05) translate3d(0, 0, 0);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1) translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes windowClose {
+  0% {
+    transform: scale(1) translate3d(0, 0, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.3) translate3d(0, 0, 0);
+    opacity: 0;
+  }
+}
+
+@keyframes windowMinimize {
+  0% {
+    transform: scale(1) translate3d(0, 0, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.1) translate3d(0, 200px, 0);
+    opacity: 0;
+  }
+}
+
+@keyframes windowExpand {
+  0% {
+    transform: scale(0.8) translate3d(0, 0, 0);
+  }
+  100% {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+}
+
+/* Clases para aplicar las animaciones */
+.window-opening {
+  animation: windowOpen 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.window-closing {
+  animation: windowClose 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.window-minimizing {
+  animation: windowMinimize 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.window-expanding {
+  animation: windowExpand 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* Transición suave para el arrastre */
+.window-dragging {
+  transition: none !important;
+  will-change: transform;
+}
+
+.window-normal {
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Efectos de profundidad y sombra */
+.window-shadow {
+  box-shadow:
+    0 25px 50px -12px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Animación de foco */
+@keyframes windowFocus {
+  0% {
+    box-shadow:
+      0 25px 50px -12px rgba(0, 0, 0, 0.25),
+      0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+  100% {
+    box-shadow:
+      0 25px 50px -12px rgba(0, 0, 0, 0.4),
+      0 0 0 1px rgba(255, 255, 255, 0.1),
+      0 0 0 4px rgba(0, 122, 255, 0.3);
+  }
+}
+
+.window-focused {
+  animation: windowFocus 0.2s ease-out forwards;
+}

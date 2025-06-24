@@ -1,0 +1,378 @@
+/* ==============================================
+   ANIMACIONES CARACTERÍSTICAS DE macOS
+   Efectos auténticos del sistema operativo macOS
+   ============================================== */
+
+/* =====================================
+   ANIMACIONES DE APERTURA DE APPS
+   ===================================== */
+
+/* Efecto de apertura desde el dock - Escala y bounce */
+@keyframes macOS-app-open {
+  0% {
+    transform: scale(0.1) translate3d(0, 100px, 0);
+    opacity: 0;
+    filter: blur(4px);
+  }
+  50% {
+    transform: scale(1.1) translate3d(0, -10px, 0);
+    opacity: 0.8;
+    filter: blur(1px);
+  }
+  70% {
+    transform: scale(0.95) translate3d(0, 5px, 0);
+    opacity: 0.9;
+    filter: blur(0px);
+  }
+  85% {
+    transform: scale(1.02) translate3d(0, -2px, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) translate3d(0, 0, 0);
+    opacity: 1;
+    filter: blur(0px);
+  }
+}
+
+/* Efecto de apertura rápida */
+@keyframes macOS-app-open-fast {
+  0% {
+    transform: scale(0.3) translate3d(0, 50px, 0);
+    opacity: 0;
+  }
+  80% {
+    transform: scale(1.05) translate3d(0, -5px, 0);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1) translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+/* Efecto de enfoque de ventana */
+@keyframes macOS-window-focus {
+  0% {
+    transform: scale(0.98);
+    box-shadow:
+      0 10px 30px rgba(0, 0, 0, 0.2),
+      0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow:
+      0 25px 50px rgba(0, 0, 0, 0.4),
+      0 0 0 1px rgba(255, 255, 255, 0.15),
+      0 0 0 4px rgba(0, 122, 255, 0.3);
+  }
+}
+
+/* =====================================
+   ANIMACIONES DE CIERRE DE APPS
+   ===================================== */
+
+/* Efecto de cierre hacia el dock */
+@keyframes macOS-app-close {
+  0% {
+    transform: scale(1) translate3d(0, 0, 0);
+    opacity: 1;
+    filter: blur(0px);
+  }
+  30% {
+    transform: scale(0.95) translate3d(0, 10px, 0);
+    opacity: 0.8;
+  }
+  70% {
+    transform: scale(0.4) translate3d(0, 80px, 0);
+    opacity: 0.4;
+    filter: blur(2px);
+  }
+  100% {
+    transform: scale(0.1) translate3d(0, 150px, 0);
+    opacity: 0;
+    filter: blur(6px);
+  }
+}
+
+/* Efecto de desvanecimiento suave */
+@keyframes macOS-app-fade-out {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+}
+
+/* =====================================
+   ANIMACIONES DE MINIMIZAR (GENIE EFFECT)
+   ===================================== */
+
+/* Efecto Genie clásico de macOS */
+@keyframes macOS-genie-minimize {
+  0% {
+    transform: scale(1) translate3d(0, 0, 0);
+    opacity: 1;
+    clip-path: inset(0% 0% 0% 0%);
+  }
+  30% {
+    transform: scale(0.9) translate3d(0, 20px, 0);
+    opacity: 0.9;
+    clip-path: inset(0% 0% 10% 0%);
+  }
+  60% {
+    transform: scale(0.5) translate3d(0, 100px, 0);
+    opacity: 0.6;
+    clip-path: inset(0% 0% 40% 0%);
+  }
+  90% {
+    transform: scale(0.2) translate3d(0, 200px, 0);
+    opacity: 0.3;
+    clip-path: inset(0% 0% 70% 0%);
+  }
+  100% {
+    transform: scale(0.05) translate3d(0, 300px, 0);
+    opacity: 0;
+    clip-path: inset(0% 0% 95% 0%);
+  }
+}
+
+/* Efecto Scale para minimizar */
+@keyframes macOS-scale-minimize {
+  0% {
+    transform: scale(1) translate3d(0, 0, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.1) translate3d(0, 200px, 0);
+    opacity: 0;
+  }
+}
+
+/* =====================================
+   ANIMACIONES DE MAXIMIZAR/EXPANDIR
+   ===================================== */
+
+/* Efecto de expansión completa */
+@keyframes macOS-expand-fullscreen {
+  0% {
+    transform: scale(0.8);
+    border-radius: 16px;
+  }
+  100% {
+    transform: scale(1);
+    border-radius: 0px;
+  }
+}
+
+/* Efecto de restaurar desde fullscreen */
+@keyframes macOS-restore-window {
+  0% {
+    transform: scale(1);
+    border-radius: 0px;
+  }
+  100% {
+    transform: scale(0.95);
+    border-radius: 16px;
+  }
+}
+
+/* =====================================
+   ANIMACIONES DEL DOCK
+   ===================================== */
+
+/* Bounce effect para iconos del dock */
+@keyframes macOS-dock-bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  10% {
+    transform: translateY(-15px) scale(1.1);
+  }
+  30% {
+    transform: translateY(-10px) scale(1.05);
+  }
+  60% {
+    transform: translateY(-5px) scale(1.02);
+  }
+}
+
+/* Efecto de hover en dock */
+@keyframes macOS-dock-hover {
+  0% {
+    transform: scale(1) translateY(0);
+  }
+  100% {
+    transform: scale(1.5) translateY(-10px);
+  }
+}
+
+/* =====================================
+   CLASES PARA APLICAR LAS ANIMACIONES
+   ===================================== */
+
+/* Animaciones de apertura */
+.macOS-opening {
+  animation: macOS-app-open 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.macOS-opening-fast {
+  animation: macOS-app-open-fast 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.macOS-focusing {
+  animation: macOS-window-focus 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* Animaciones de cierre */
+.macOS-closing {
+  animation: macOS-app-close 0.5s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards;
+}
+
+.macOS-fading-out {
+  animation: macOS-app-fade-out 0.3s ease-out forwards;
+}
+
+/* Animaciones de minimizar */
+.macOS-genie-minimizing {
+  animation: macOS-genie-minimize 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.macOS-scale-minimizing {
+  animation: macOS-scale-minimize 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* Animaciones de maximizar */
+.macOS-expanding {
+  animation: macOS-expand-fullscreen 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.macOS-restoring {
+  animation: macOS-restore-window 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* Animaciones del dock */
+.macOS-dock-bouncing {
+  animation: macOS-dock-bounce 0.8s ease-in-out;
+}
+
+.macOS-dock-hovering {
+  animation: macOS-dock-hover 0.2s ease-out forwards;
+}
+
+/* =====================================
+   TRANSICIONES SUAVES
+   ===================================== */
+
+/* Transición para arrastre */
+.macOS-dragging {
+  transition: none !important;
+  will-change: transform;
+  cursor: grabbing !important;
+}
+
+/* Transición normal */
+.macOS-smooth {
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Transición rápida */
+.macOS-quick {
+  transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* =====================================
+   EFECTOS DE PROFUNDIDAD Y SOMBRAS
+   ===================================== */
+
+/* Sombra característica de macOS */
+.macOS-window-shadow {
+  box-shadow:
+    0 25px 50px -12px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Sombra para ventana enfocada */
+.macOS-window-focused {
+  box-shadow:
+    0 35px 70px -15px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.15),
+    0 0 0 4px rgba(0, 122, 255, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* Sombra para arrastre */
+.macOS-window-dragging {
+  box-shadow:
+    0 45px 80px -20px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(255, 255, 255, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* =====================================
+   EFECTOS ESPECIALES
+   ===================================== */
+
+/* Efecto de cristal/blur característico */
+.macOS-blur-effect {
+  backdrop-filter: blur(20px) saturate(180%);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Efecto de vibrance */
+.macOS-vibrant {
+  backdrop-filter: blur(30px) saturate(200%) brightness(1.1);
+}
+
+/* Efecto de resplandor */
+@keyframes macOS-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(0, 122, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(0, 122, 255, 0.6);
+  }
+}
+
+.macOS-glowing {
+  animation: macOS-glow 2s ease-in-out infinite;
+}
+
+/* =====================================
+   RESPONSIVE ADAPTATIONS
+   ===================================== */
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 768px) {
+  .macOS-opening {
+    animation-duration: 0.4s;
+  }
+
+  .macOS-closing {
+    animation-duration: 0.3s;
+  }
+
+  .macOS-genie-minimizing {
+    animation-duration: 0.5s;
+  }
+}
+
+/* Preferencias de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  .macOS-opening,
+  .macOS-closing,
+  .macOS-genie-minimizing,
+  .macOS-expanding,
+  .macOS-dock-bouncing {
+    animation-duration: 0.1s;
+  }
+
+  .macOS-smooth,
+  .macOS-quick {
+    transition-duration: 0.1s;
+  }
+}
