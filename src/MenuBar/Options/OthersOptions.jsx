@@ -6,7 +6,7 @@ export default function OthersOptions() {
 
   return (
     <div className="absolute  w-[208px] p-[4px] top-7 bg-white/40 backdrop-blur-md text-white text-[14px] font-[Lexend] rounded-md">
-      <a className={`${buttonsStyle}`} href="https://github.com/carloss765">About This Mac</a>
+      <a className={`${buttonsStyle}`} href="https://github.com/carloss765/MacBook-Simulator">About This Mac</a>
       <div className="w-full h-px bg-black/10 my-1" />
       <button className={buttonsStyle}>System Preferences</button>
       <div className="w-full h-px bg-black/10 my-1" />

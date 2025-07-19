@@ -7,13 +7,12 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate a loading time
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 3000); // 3 seconds
+    }, 1000);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [loading]);
 
   return <div className="App">{loading ? <LoadingScreen /> : <Desktop />}</div>;
 }
